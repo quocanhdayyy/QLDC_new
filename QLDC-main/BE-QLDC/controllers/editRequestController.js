@@ -99,6 +99,14 @@ module.exports = {
       next(err);
     }
   },
+  async getStats(req, res, next) {
+    try {
+      const stats = await editRequestService.getStats();
+      res.json(stats);
+    } catch (err) {
+      next(err);
+    }
+  },
   async getAll(req, res, next) {
     try {
       const { page, limit, sort, ...filter } = req.query;

@@ -8,7 +8,8 @@ const router = express.Router();
 router.get("/me", authenticate, editRequestController.getMyRequests);
 
 // Stats route must come before /:id
-router.get("/stats", authenticate, editRequestController.getStats);
+// Stats - only accessible by leader
+router.get("/stats", authenticate, isLeader, editRequestController.getStats);
 router.get("/", authenticate, isLeader, editRequestController.getAll);
 router.get("/:id", authenticate, editRequestController.getById);
 // Allow both citizen and leader to create requests
