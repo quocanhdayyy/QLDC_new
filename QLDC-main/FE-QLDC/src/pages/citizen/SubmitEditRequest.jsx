@@ -259,8 +259,8 @@ const SubmitEditRequest = () => {
           </Form>
         </Card>
       </div>
-    </div>
-  )
-}
+    </Layout>
+  );
+};
 
-export default SubmitEditRequest
+export default SubmitEditRequest;

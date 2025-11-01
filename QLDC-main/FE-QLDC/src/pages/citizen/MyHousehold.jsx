@@ -22,6 +22,8 @@ import {
 } from "@ant-design/icons";
 import Layout from "../../components/Layout";
 import { citizenService } from "../../services";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import dayjs from "dayjs";
 
 const { Title, Text } = Typography;
@@ -30,6 +32,12 @@ const MyHousehold = () => {
   const [loading, setLoading] = useState(true);
   const [household, setHousehold] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   useEffect(() => {
     fetchHouseholdData();
@@ -183,7 +191,6 @@ const MyHousehold = () => {
       <nav className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
-<<<<<<< HEAD
             <button
               onClick={() => navigate("/citizen/dashboard")}
               className="text-blue-600 hover:text-blue-800"
@@ -198,14 +205,6 @@ const MyHousehold = () => {
             onClick={handleLogout}
             className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
           >
-=======
-            <button onClick={() => navigate("/citizen/dashboard")} className="text-blue-600 hover:text-blue-800">
-              ← Quay lại
-            </button>
-            <h1 className="text-2xl font-bold text-gray-800">Hộ Khẩu Của Tôi</h1>
-          </div>
-          <button onClick={handleLogout} className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
->>>>>>> 4a0a33dfece39de1d31ff3599a83dec6fd6f10a4
             Đăng xuất
           </button>
         </div>
@@ -282,16 +281,9 @@ const MyHousehold = () => {
             scroll={{ x: 1000 }}
           />
         </Card>
-<<<<<<< HEAD
       </nav>
     </div>
   );
 };
-=======
-      </div>
-    </div>
-  )
-}
->>>>>>> 4a0a33dfece39de1d31ff3599a83dec6fd6f10a4
 
-export default MyHousehold
+export default MyHousehold;

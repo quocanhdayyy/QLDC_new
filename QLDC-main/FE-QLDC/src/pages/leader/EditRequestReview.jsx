@@ -22,6 +22,8 @@ import {
 } from "@ant-design/icons";
 import Layout from "../../components/Layout";
 import { editRequestService } from "../../services/editRequestService";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import dayjs from "dayjs";
 
 const { Title, Text } = Typography;
@@ -30,6 +32,12 @@ const { TextArea } = Input;
 
 const EditRequestReview = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   const [searchText, setSearchText] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [viewModalVisible, setViewModalVisible] = useState(false);
@@ -250,7 +258,8 @@ const EditRequestReview = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <Layout>
+      <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
@@ -460,9 +469,10 @@ const EditRequestReview = () => {
             </>
           )}
         </Modal>
+      </nav>
       </div>
-    </div>
-  )
-}
+    </Layout>
+  );
+};
 
-export default EditRequestReview
+export default EditRequestReview;

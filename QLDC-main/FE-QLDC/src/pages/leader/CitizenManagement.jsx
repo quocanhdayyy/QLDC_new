@@ -1,17 +1,42 @@
-<<<<<<< HEAD
 "use client";
 
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-=======
-"use client"
-
-import { useNavigate } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
->>>>>>> 4a0a33dfece39de1d31ff3599a83dec6fd6f10a4
+import {
+  Card,
+  Table,
+  Button,
+  Input,
+  Space,
+  Tag,
+  Modal,
+  Form,
+  Select,
+  message,
+  Popconfirm,
+  Avatar,
+  DatePicker,
+} from "antd";
+import {
+  PlusOutlined,
+  SearchOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  EyeOutlined,
+  ManOutlined,
+  WomanOutlined,
+} from "@ant-design/icons";
+import dayjs from "dayjs";
+import { citizenService, householdService } from "../../services";
 
 const CitizenManagement = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -294,11 +319,11 @@ const CitizenManagement = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <Layout>
+      <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4">
-<<<<<<< HEAD
             <button
               onClick={() => navigate("/leader/dashboard")}
               className="text-blue-600 hover:text-blue-800"
@@ -313,14 +338,6 @@ const CitizenManagement = () => {
             onClick={handleLogout}
             className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
           >
-=======
-            <button onClick={() => navigate("/leader/dashboard")} className="text-blue-600 hover:text-blue-800">
-              ← Quay lại
-            </button>
-            <h1 className="text-2xl font-bold text-gray-800">Quản Lý Công Dân</h1>
-          </div>
-          <button onClick={handleLogout} className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
->>>>>>> 4a0a33dfece39de1d31ff3599a83dec6fd6f10a4
             Đăng xuất
           </button>
         </div>
@@ -642,16 +659,10 @@ const CitizenManagement = () => {
             </Form.Item>
           </Form>
         </Modal>
-<<<<<<< HEAD
       </nav>
-    </div>
+      </div>
+    </Layout>
   );
 };
-=======
-      </div>
-    </div>
-  )
-}
->>>>>>> 4a0a33dfece39de1d31ff3599a83dec6fd6f10a4
 
-export default CitizenManagement
+export default CitizenManagement;

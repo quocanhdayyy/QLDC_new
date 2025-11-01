@@ -339,8 +339,8 @@ const MyRequests = () => {
           )}
         </Modal>
       </div>
-    </div>
-  )
-}
+    </Layout>
+  );
+};
 
 export default MyRequests;
